@@ -173,6 +173,28 @@ for (i = 0; i < 10; i = i + 1) {
 }
 print("\n");
 
+i = 0;
+while (i < 2) {
+  j = 0;
+  while (j < 2) {
+    print(" j.." + j);
+    j = j + 1;
+    continue;
+    print("foo");
+  }
+  print("bar\n");
+  i = i + 1;
+}
+
+for (i = 0; i < 2; i = i + 1) {
+  for (j = 0; j < 2; j = j + 1) {
+    print(" j.." + j);
+    continue;
+    print("foo");
+  }
+  print("bar\n");
+}
+
 ############################################################
 # Check boolean operations
 ############################################################

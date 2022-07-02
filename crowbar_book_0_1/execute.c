@@ -158,6 +158,8 @@ execute_while_statement(CRB_Interpreter *inter, LocalEnvironment *env,
         } else if (result.type == BREAK_STATEMENT_RESULT) {
             result.type = NORMAL_STATEMENT_RESULT;
             break;
+        } else if (result.type == CONTINUE_STATEMENT_RESULT) {
+            result.type = NORMAL_STATEMENT_RESULT;
         }
     }
 
@@ -197,6 +199,8 @@ execute_for_statement(CRB_Interpreter *inter, LocalEnvironment *env,
         } else if (result.type == BREAK_STATEMENT_RESULT) {
             result.type = NORMAL_STATEMENT_RESULT;
             break;
+        } else if (result.type == CONTINUE_STATEMENT_RESULT) {
+            result.type = NORMAL_STATEMENT_RESULT;
         }
 
         if (statement->u.for_s.post) {
