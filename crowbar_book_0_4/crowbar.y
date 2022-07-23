@@ -282,7 +282,11 @@ primary_expression
         | closure_definition
         ;
 array_literal
-        : LC expression_list RC
+        : LC RC
+        {
+            $$ = crb_create_array_expression(NULL);
+        }
+        | LC expression_list RC
         {
             $$ = crb_create_array_expression($2);
         }
@@ -310,11 +314,7 @@ closure_definition
         }
         ;
 expression_list
-        : /* empty */
-        {
-            $$ = NULL;
-        }
-        | assignment_expression
+        : assignment_expression
         {
             $$ = crb_create_expression_list($1);
         }

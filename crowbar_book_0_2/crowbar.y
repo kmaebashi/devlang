@@ -235,7 +235,11 @@ primary_expression
         | array_literal
         ;
 array_literal
-        : LC expression_list RC
+        : LC RC
+        {
+            $$ = crb_create_array_expression(NULL);
+        }
+        | LC expression_list RC
         {
             $$ = crb_create_array_expression($2);
         }
@@ -245,11 +249,7 @@ array_literal
         }
         ;
 expression_list
-        : /* empty */
-        {
-            $$ = NULL;
-        }
-        | expression
+        : expression
         {
             $$ = crb_create_expression_list($1);
         }

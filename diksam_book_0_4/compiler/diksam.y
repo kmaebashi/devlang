@@ -500,7 +500,11 @@ primary_no_new_array
         }
         ;
 array_literal
-        : LC expression_list RC
+        : LC RC
+        {
+            $$ = dkc_create_array_literal_expression(NULL);
+        }
+        | LC expression_list RC
         {
             $$ = dkc_create_array_literal_expression($2);
         }
@@ -553,11 +557,7 @@ dimension_list
         }
         ;
 expression_list
-        : /* empty */
-        {
-            $$ = NULL;
-        }
-        | assignment_expression
+        : assignment_expression
         {
             $$ = dkc_create_expression_list($1);
         }
@@ -745,11 +745,11 @@ catch_list
 catch_clause
         : CATCH
         {
-            $$ = dkc_start_catch_clause();
+            $<catch_clause>$ = dkc_start_catch_clause();
         }
           LP type_specifier IDENTIFIER RP block
         {
-            $$ = dkc_end_catch_clause($<catch_clause>2, $4, $5, $7);
+            $<catch_clause>$ = dkc_end_catch_clause($<catch_clause>2, $4, $5, $7);
         }
         ;
 throw_statement
