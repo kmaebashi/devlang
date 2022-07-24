@@ -359,8 +359,6 @@ Variable *
 crb_search_global_variable(CRB_Interpreter *inter, char *identifier);
 void crb_add_local_variable(LocalEnvironment *env,
                             char *identifier, CRB_Value *value);
-CRB_NativeFunctionProc *
-crb_search_native_function(CRB_Interpreter *inter, char *name);
 FunctionDefinition *crb_search_function(char *name);
 char *crb_get_operator_string(ExpressionType type);
 

@@ -231,16 +231,16 @@ crb_get_operator_string(ExpressionType type)
         str = "!=";
         break;
     case GT_EXPRESSION:
-        str = "<";
-        break;
-    case GE_EXPRESSION:
-        str = "<=";
-        break;
-    case LT_EXPRESSION:
         str = ">";
         break;
-    case LE_EXPRESSION:
+    case GE_EXPRESSION:
         str = ">=";
+        break;
+    case LT_EXPRESSION:
+        str = "<";
+        break;
+    case LE_EXPRESSION:
+        str = "<=";
         break;
     case LOGICAL_AND_EXPRESSION:
         str = "&&";

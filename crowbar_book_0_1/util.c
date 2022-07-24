@@ -18,24 +18,6 @@ crb_set_current_interpreter(CRB_Interpreter *inter)
     st_current_interpreter = inter;
 }
 
-/* BUGBUG
-CRB_NativeFunctionProc *
-crb_search_native_function(CRB_Interpreter *inter, char *name)
-{
-    NativeFunction *pos;
-
-    for (pos = inter->native_function; pos; pos = pos->next) {
-        if (!strcmp(pos->name, name))
-            break;
-    }
-    if (pos) {
-        return pos->proc;
-    } else {
-        return NULL;
-    }
-}
-*/
-
 FunctionDefinition *
 crb_search_function(char *name)
 {
@@ -174,16 +156,16 @@ crb_get_operator_string(ExpressionType type)
         str = "!=";
         break;
     case GT_EXPRESSION:
-        str = "<";
-        break;
-    case GE_EXPRESSION:
-        str = "<=";
-        break;
-    case LT_EXPRESSION:
         str = ">";
         break;
-    case LE_EXPRESSION:
+    case GE_EXPRESSION:
         str = ">=";
+        break;
+    case LT_EXPRESSION:
+        str = "<";
+        break;
+    case LE_EXPRESSION:
+        str = "<=";
         break;
     case MINUS_EXPRESSION:
         str = "-";
